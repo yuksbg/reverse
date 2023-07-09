@@ -150,6 +150,10 @@ func (g *GoLanguage) Tag(table *schemas.Table, col *schemas.Column) template.HTM
 		res = append(res, fmt.Sprintf("comment('%s')", col.Comment))
 	}
 
+	if strings.HasPrefix("virt_",col.FieldName) {
+		res = append(res, " <-")
+	}
+
 	names := make([]string, 0, len(col.Indexes))
 	for name := range col.Indexes {
 		names = append(names, name)
