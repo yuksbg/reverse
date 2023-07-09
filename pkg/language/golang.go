@@ -150,7 +150,7 @@ func (g *GoLanguage) Tag(table *schemas.Table, col *schemas.Column) template.HTM
 		res = append(res, fmt.Sprintf("comment('%s')", col.Comment))
 	}
 
-	if strings.HasPrefix("virt_",col.FieldName) {
+	if strings.HasPrefix("virtual_", strings.ToLower(col.FieldName)) {
 		res = append(res, " <-")
 	}
 
